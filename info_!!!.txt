@@ -1,0 +1,22 @@
+http://localhost/gulp_lovecraft/
+Place "gulp_lovecraft" folder in web directory apache
+npm start	- for starting server and lunch App
+Ctrl-C 		- for stop server App
+
+App gulp_lovecraft structure:
+	- Gulpfile.js
+	- index.php
+	- js.js
+	- php_ajax.php
+		| node_modules
+		| IMG
+			- SVG/PNG img
+		|css
+		- style.css
+		- style.less
+
+*Need to be installed:
+	- Node.js Package Manager
+	- gulp
+	- apache/php
+	
