@@ -1,0 +1,248 @@
+
+// Site dimension:
+@media_width4query: 750px;
+
+// Padding inside blocks and between blocks and block like elements.
+@block_padding: 5px;
+
+
+// Colors:
+@body_background: #0000001a;
+@ajaxform_background: white;
+
+
+// Font-sizes:
+@font_size: 14px;
+@standart_font_size: 100%;
+@new_font_size: "standart_font_size";
+
+// ajaxform 
+  [id="div_ajaxform"]{
+		background:@ajaxform_background;
+		display: block;
+		width: 50%;
+		margin-left: 25%;
+
+		#formImage > img{	
+			width: 40%;
+			height: 90px;
+		}
+		#formImage{
+			background: #0000001a;
+			
+		#FormLabel{
+			float: right;
+			width: 50%;
+			height: 90px;
+			line-height: 90px;
+			text-align: center;
+			color: #776e6e;
+
+				h2{
+					margin: 0 !important;
+					  display: inline-block;
+					  vertical-align: middle;
+					  line-height: normal;
+				}				
+			}
+		}
+		
+		#srcformImageSmall{
+		display:none;
+		}
+		
+	#ajaxform{
+		padding: @block_padding*3;
+		display: block;
+		max-width: 500px;
+		height: 150px;
+		padding: @block_padding;
+		
+			label {
+				margin: @block_padding/2;
+				width: 45%;
+			}
+			
+			input {
+				padding: 1px;
+				width: 50%;
+				margin-right: 10%;
+				max-width: 300px;
+			}
+			
+			#btnSubmit{
+				.border-radius(5px);
+				background: #11b698b3;
+				color: white;
+				float: left;
+				padding: @block_padding/2;
+				width: 100px;
+				margin-top:  @block_padding;	
+				font-weight: bold;
+			}
+			
+			#divCheckFieldMatch{
+				padding: 1px;
+				width: 50%;
+				margin-right: 10%;
+				max-width: 300px;
+				float: right;
+			}
+	}
+
+	
+	input{
+		float: right;
+		clear: both;
+	}
+	
+
+}
+
+
+body{
+	background:#0000001a;
+	font-family: "Arial";
+	line-height: 142%;
+	height: 100%;
+	
+	#spinner{
+	  display: none;
+	  position: absolute;
+	  left: 50%;
+	  top: 20%;
+	  width:70px;
+}
+}
+
+// media query screen less 750px 
+
+@media only screen and (max-width : (@media_width4query - 20px)){
+    [id="div_ajaxform"]{
+    width: 100%;
+    margin-left: 0;
+	
+		#ajaxform input {
+			float: left;
+		}
+		
+		#ajaxform label{
+		
+		}
+		
+		#srcformImageSmall{
+			display:block;
+			display: inline-block;
+		}
+		
+		#srcformImage{
+			display:none;
+		}
+		
+		 #formImage > img {
+			width: auto;
+		}
+		
+		 #ajaxform {
+			display: inline-block;
+			height: auto;
+			padding: 5px;
+			input{
+				width: 100%;
+				}
+		}
+		
+		#formImage #FormLabel{
+			float: right;
+			text-align: left;
+			width: 80%;
+				h2{
+					margin: 0 ;
+				}	
+		
+			}
+};
+
+
+}
+
+
+
+// Allow easy use of RGBA color with IE fallback.
+.rgba-background(@colour, @alpha){
+  @alphaColour: hsla(hue(@colour), saturation(@colour), lightness(@colour), @alpha);
+  @ieAlphaColour: argb(@alphaColour);
+  background-color: @colour; // Fallback for older browsers
+  background-color: @alphaColour;
+  // IE hacks
+  zoom: 1; // hasLayout
+  // target IE8 and below.
+  background-color: transparent\9;
+  -ms-filter:  "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieAlphaColour}, endColorstr=@{ieAlphaColour})"; // IE 8+
+  filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieAlphaColour}, endColorstr=@{ieAlphaColour})"; // IE 6 & 7
+}
+
+// Linear gradient
+.gradient (@origin: top, @start: #ffffff, @stop: #000000) {
+  background-color: @start;
+  background-image: -webkit-linear-gradient(@origin, @start, @stop);
+  background-image: -webkit-gradient(@origin, @start, @stop);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,@start), color-stop(100%,@stop));
+  background-image: -moz-linear-gradient(@origin, @start, @stop);
+  background-image: -o-linear-gradient(@origin, @start, @stop);
+  background-image: -ms-linear-gradient(@origin, @start, @stop);
+  background-image: linear-gradient(@origin, @start, @stop);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@start, endColorstr=@stop);
+}
+
+// Rounded corners all round
+.border-radius (@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+// Choose box model
+.box-sizing (@box-sizing){
+  -webkit-box-sizing: @box-sizing;
+  -moz-box-sizing: @box-sizing;
+  box-sizing: @box-sizing;
+}
+
+// Transitions
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
+.boxshadow(@shadow) {
+  -moz-box-shadow: @shadow;
+  -webkit-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+.transform(@transform){
+  -webkit-transform: @transform;
+  -moz-transform: @transform;
+  -o-transform: @transform;
+}
+// Animations
+.animate(@animation){
+  -webkit-animation: @animation; /* Safari and Chrome */
+  -moz-animation: @animation; /* Firefox */
+  -ms-animation: @animation; /* Internet Explorer */
+  -o-animation: @animation; /* Opera */
+  animation: @animation;
+}
+
+/* Mixin */@base: #663333;
+@complement1: spin(@base, 180);
+@complement2: darken(spin(@base, 180), 5%);
+@lighten1: lighten(@base, 15%);
+@lighten2: lighten(@base, 30%);
+
+/* Implementation */.one   {color: @base;}
+.two   {color: @complement1;}
+.three {color: @complement2;}
+.four  {color: @lighten1;}
+.five  {color: @lighten2;}
